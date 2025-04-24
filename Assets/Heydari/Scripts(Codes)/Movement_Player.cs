@@ -2,67 +2,62 @@
 
 public class Movement_Player : MonoBehaviour
 {
-    [SerializeField] float _Main_Move_Speed;
-    [SerializeField] Animator _animator;
-    [SerializeField] float _Horizontal_Input;
-
-    [SerializeField] Transform _GroundPsition;
+    [SerializeField] float _Main_Move_Speed = 5f;
+    [SerializeField] float _JumpForse = 10f;
     [SerializeField] LayerMask _LayerMask;
-    [SerializeField] float _JumpForse;
-    [SerializeField] float _MaxJump = 2;
-    private float _CountJump = 0;
-    private Rigidbody2D _Rigidbody;
+    [SerializeField] Transform _GroundPosition;
+    [SerializeField] Animator _animator;
+    [SerializeField] int _MaxJump = 2;
+    [SerializeField] Rigidbody2D _Rigidbody;
+    private float _Horizontal_Input;
+    private int _CountJump = 0;
 
     void Start()
     {
-        _Rigidbody = GetComponent<Rigidbody2D>();
+       
     }
+
     void Update()
     {
         Move();
         Jump();
     }
+
     private void Move()
     {
-        _Horizontal_Input = Input.GetAxisRaw("Horizontal");
-        Vector3 movement_Right = new(_Horizontal_Input, 0, 0);
+        _Horizontal_Input = Input.GetAxis("Horizontal");
+        _Rigidbody.linearVelocity = new Vector2(_Horizontal_Input * _Main_Move_Speed, _Rigidbody.linearVelocity.y);
 
-        _animator.SetFloat("Blend", 0);
+        _animator.SetFloat("Main_Blend", Mathf.Abs(_Horizontal_Input));
 
-        if (_Horizontal_Input == 1)
+        if (_Horizontal_Input > 0)
         {
-            // حرکت به راست
-            transform.rotation = Quaternion.Euler(0, 0, 0); // رو به راست
-            transform.Translate(_Main_Move_Speed * Time.deltaTime * movement_Right);
-            _animator.SetFloat("Blend", 0.25f);
+            transform.localScale = new Vector3(1, 1, 1); // رو به راست
         }
-        else if (_Horizontal_Input == -1f)
+        else if (_Horizontal_Input < 0)
         {
-            // حرکت به چپ
-            Vector3 movement_Left = new(-(_Horizontal_Input), 0, 0);
-            transform.rotation = Quaternion.Euler(0, 180, 0); // رو به چپ
-            transform.Translate(_Main_Move_Speed * Time.deltaTime * movement_Left);
-            _animator.SetFloat("Blend", -0.25f);
+            transform.localScale = new Vector3(-1, 1, 1); // رو به چپ
         }
-
     }
+
     private void Jump()
     {
-        if (Physics2D.OverlapCircle(_GroundPsition.position, 0.01f, _LayerMask) == true)
+        bool isGrounded = Physics2D.OverlapCircle(_GroundPosition.position, 0.3f, _LayerMask);
+
+        //Debug.Log("Is _CountJump: " + _CountJump);
+        //Debug.Log("Is Grounded: " + isGrounded);
+        if (isGrounded)
         {
-            _CountJump = 1;
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _Rigidbody.linearVelocity = new(_Rigidbody.linearVelocity.x, _JumpForse);
-                _animator.SetFloat("Blend", 1f);
-                //print(_Rigidbody.linearVelocity.ToString());
-            }
+            _CountJump = 0; // تعداد پرش‌ها را صفر کنید
         }
-        else if (_CountJump < _MaxJump && Input.GetKeyDown(KeyCode.Space))
+        //Debug.Log("Is _CountJump: " + _CountJump);
+        if (Input.GetKeyDown(KeyCode.Space) && _CountJump < _MaxJump)
         {
+            //Debug.Log("Is _CountJump: " + _CountJump);
             _CountJump++;
-            _Rigidbody.linearVelocity = new(_Rigidbody.linearVelocity.x, _JumpForse);
-            _animator.SetFloat("Blend", 1f);
+            _Rigidbody.linearVelocity= new Vector2(_Rigidbody.linearVelocity.x, _JumpForse);
+            _animator.SetTrigger("Main_Jump");
+            //Debug.Log("Is _CountJump: " + _CountJump);
         }
     }
 }

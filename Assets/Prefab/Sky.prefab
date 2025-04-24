@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3927167608609650272}
   - component: {fileID: 989041189594574618}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.9, y: 1.3, z: 0}
-  m_LocalScale: {x: 1.1643711, y: 0.97621, z: 1}
+  m_LocalScale: {x: 1.0913037, y: 0.51107633, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
