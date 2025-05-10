@@ -8,8 +8,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private AttackEnemy attackEnemy;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float attackRange = 1f;
-    [SerializeField] private float idleToMoveDelay = 0.2f; // تاخیر قبل از فعال شدن حرکت
-    [SerializeField] private float movementDelayAfterIdle = 0.5f; // تاخیر حرکت پس از Idle
+    [SerializeField] private float idleToMoveDelay = 0.2f;
+    [SerializeField] private float movementDelayAfterIdle = 0.5f; 
 
     private Rigidbody2D rb;
     private bool isAttacking = false;
@@ -52,13 +52,11 @@ public class EnemyAI : MonoBehaviour
         // حرکت به سمت پلیر
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
 
-        // تغییر جهت دشمن
         if (direction.x > 0.1f)
             transform.localScale = new Vector3(-1, 1, 1);
         else if (direction.x < -0.1f)
             transform.localScale = new Vector3(1, 1, 1);
 
-        // فعال‌کردن انیمیشن حرکت
         animator.SetFloat("Speed", Mathf.Abs(direction.x));
 
         // بررسی فاصله برای حمله
@@ -96,10 +94,11 @@ public class EnemyAI : MonoBehaviour
 
         // غیرفعال کردن حرکت در زمان حمله
         rb.linearVelocity = Vector2.zero;
+
         animator.SetTrigger("Attack");
         animator.SetFloat("Speed", 0f);
 
-        // فعال‌کردن کولایدر سلاح دشمن
+        // فعال‌کردن کولایدر سلاح
         if (attackEnemy != null)
         {
             attackEnemy.ActivateEnemyWeaponCollider();

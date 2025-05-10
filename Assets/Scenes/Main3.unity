@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 1782835719}
   - component: {fileID: 1782835718}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,30 +621,6 @@ PrefabInstance:
     - target: {fileID: 289743191493693397, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
       propertyPath: m_Name
       value: C3
-      objectReference: {fileID: 0}
-    - target: {fileID: 353340845343897951, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
-      propertyPath: m_Size.x
-      value: 165.94296
-      objectReference: {fileID: 0}
-    - target: {fileID: 353340845343897951, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
-      propertyPath: m_Offset.x
-      value: -154.9145
-      objectReference: {fileID: 0}
-    - target: {fileID: 572937763718394768, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
-      propertyPath: m_Size.y
-      value: 83.672485
-      objectReference: {fileID: 0}
-    - target: {fileID: 572937763718394768, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
-      propertyPath: m_Offset.y
-      value: 90.7498
-      objectReference: {fileID: 0}
-    - target: {fileID: 1080013967014159597, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
-      propertyPath: m_Size.x
-      value: 156.69698
-      objectReference: {fileID: 0}
-    - target: {fileID: 1080013967014159597, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
-      propertyPath: m_Offset.x
-      value: 179.35144
       objectReference: {fileID: 0}
     - target: {fileID: 5413653410822484842, guid: 0678b02ab2aa6af4a9f4472708ef14c7, type: 3}
       propertyPath: m_LocalPosition.x

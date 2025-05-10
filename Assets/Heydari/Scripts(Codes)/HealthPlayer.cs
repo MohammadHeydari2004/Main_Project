@@ -3,7 +3,7 @@
 public class HealthPlayer : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private Animator animator; // تنظیم در اینسپکتور
+    [SerializeField] private Animator animator;
 
     private int currentHealth;
     private bool isDead = false;
@@ -18,6 +18,7 @@ public class HealthPlayer : MonoBehaviour
         if (isDead) return;
 
         Debug.Log("health P: " + currentHealth);
+
         currentHealth -= damageAmount;
 
         if (currentHealth <= 0)
@@ -26,7 +27,6 @@ public class HealthPlayer : MonoBehaviour
         }
     }
 
-    // در تابع TakeDamage، برخورد با حمله باس را اضافه کنید:
     public void TakeDamageFromBoss(int damage)
     {
         if (isDead) return;
@@ -48,7 +48,6 @@ public class HealthPlayer : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         GetComponent<Collider2D>().enabled = false;
 
-        // پخش انیمیشن مرگ
         animator.SetTrigger("Die");
     }
 

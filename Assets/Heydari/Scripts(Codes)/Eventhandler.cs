@@ -26,13 +26,6 @@ public class Eventhandler : MonoBehaviour
         unityEvent.Invoke();
     }
 
-    //public void OnHeavyAttackStart1() { bossAI.OnHeavyAttackStart(); }
-    //public void OnHeavyAttackEnd1() { bossAI.OnHeavyAttackEnd(); }
-    //public void OnIdleAnimationEnd1() { bossAI.OnIdleAnimationEnd(); }
-    //public void OnQuickAttackStart1() { bossAI.OnQuickAttackStart(); }
-    //public void OnQuickAttackEnd1() { bossAI.OnQuickAttackEnd(); }
-    //public void OnVulnerableExit1() { bossAI.OnVulnerableExit(); }
-
     public void BossHealth1() { bossHealth.OnDeathAnimationEnd(); }
 
 }

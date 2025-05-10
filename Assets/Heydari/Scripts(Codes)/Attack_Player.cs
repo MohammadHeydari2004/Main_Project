@@ -6,7 +6,7 @@ public class Attack_Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private LayerMask _groundLayerMask;
     [SerializeField] private Transform _groundPosition;
-    [SerializeField] private Collider2D weaponCollider; // تنظیم در اینسپکتور
+    [SerializeField] private Collider2D weaponCollider; 
     [SerializeField] private float attackDuration = 0.2f; // زمان فعال بودن کولایدر
 
     private void Update()

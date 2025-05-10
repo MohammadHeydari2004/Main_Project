@@ -19,10 +19,7 @@ public class HealthEnemy : MonoBehaviour
     {
         if (isDead) return;
 
-
         currentHealth -= damageAmount;
-
-      //  Debug.Log("health E: " + currentHealth);
 
         if (currentHealth <= 0)
         {
