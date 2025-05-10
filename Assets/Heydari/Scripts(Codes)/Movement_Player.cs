@@ -11,11 +11,7 @@ public class Movement_Player : MonoBehaviour
     [SerializeField] Rigidbody2D _Rigidbody;
     private float _Horizontal_Input;
     private int _CountJump = 0;
-
-    void Start()
-    {
-       
-    }
+    private bool _isGroundedPrev = false;
 
     void Update()
     {
@@ -32,32 +28,33 @@ public class Movement_Player : MonoBehaviour
 
         if (_Horizontal_Input > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1); // رو به راست
+            transform.localScale = new Vector3(1, 1, 1); // Right
         }
         else if (_Horizontal_Input < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1); // رو به چپ
+            transform.localScale = new Vector3(-1, 1, 1); // Left
         }
     }
 
     private void Jump()
     {
-        bool isGrounded = Physics2D.OverlapCircle(_GroundPosition.position, 0.3f, _LayerMask);
+        bool isGrounded = Physics2D.OverlapCircle(_GroundPosition.position, 0.8f, _LayerMask);
 
-        //Debug.Log("Is _CountJump: " + _CountJump);
-        //Debug.Log("Is Grounded: " + isGrounded);
-        if (isGrounded)
+        // Check if just landed
+        if (isGrounded && !_isGroundedPrev)
         {
-            _CountJump = 0; // تعداد پرش‌ها را صفر کنید
+            _animator.SetInteger("Is_Jump", 0);
+            _CountJump = 0;
         }
-        //Debug.Log("Is _CountJump: " + _CountJump);
+
+        _isGroundedPrev = isGrounded;
+
         if (Input.GetKeyDown(KeyCode.Space) && _CountJump < _MaxJump)
         {
-            //Debug.Log("Is _CountJump: " + _CountJump);
-            _CountJump++;
-            _Rigidbody.linearVelocity= new Vector2(_Rigidbody.linearVelocity.x, _JumpForse);
+            _Rigidbody.linearVelocity = new Vector2(_Rigidbody.linearVelocity.x, _JumpForse);
             _animator.SetTrigger("Main_Jump");
-            //Debug.Log("Is _CountJump: " + _CountJump);
+            _animator.SetInteger("Is_Jump", 1);
+            _CountJump++;
         }
     }
 }

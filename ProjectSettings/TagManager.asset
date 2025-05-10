@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - enemy
+  - Enemy
+  - Boss
+  - Boss_PointA
+  - Boss_PointB
   layers:
   - Default
   - TransparentFX
@@ -13,9 +17,9 @@ TagManager:
   - Water
   - UI
   - Gruond
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Boss
   - 
   - 
   - 
@@ -44,6 +48,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 625387903
+    locked: 0
+  - name: Boss
+    uniqueID: 3777633367
     locked: 0
   m_RenderingLayers:
   - Default
