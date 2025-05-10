@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Main_Move_Speed: 30
-  _JumpForse: 50
+  _JumpForse: 40
   _LayerMask:
     serializedVersion: 2
     m_Bits: 64
